@@ -32,9 +32,15 @@ const Home = ({ categories }) => {
 
   return (
     <div className=' px-2 py-1  lg:px-10 lg:py-2.5 '>
-      <div className='flex banner w-full justify-between my-2.5'>
-        <div  className='w-full bg-sky-950 flex items-center justify-center rounded-lg' >
-          <Image width={400} height={400} src='/images/Banner/bg.png' />
+ <div className='flex banner w-full justify-between my-2.5 '>
+        <div className='relative w-full h-64 flex items-center justify-center rounded-lg overflow-hidden'>
+          <Image 
+            src='/images/Banner/bg.webp'
+            layout="fill"
+            objectFit="cover"
+            alt="Banner"
+            quality={100}
+          />
         </div>
       </div>
 
@@ -56,6 +62,7 @@ const Home = ({ categories }) => {
                 width={100}
                 height={100}
                 src={`/images/team/${team.logo}`}
+                quality={100}
               />
             </Link>
           ))}

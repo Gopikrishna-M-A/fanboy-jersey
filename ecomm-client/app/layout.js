@@ -10,8 +10,22 @@ import { options } from "../app/api/auth/[...nextauth]/options";
 import Session from "../components/Session";
 
 export const metadata = {
-  title: "Maliakkal Stores",
-  description: "Shop for fresh groceries and daily essentials at Maliakkal Stores. Find everything you need for your household.",
+  title: "FanBoy Jerseys",
+  description: "It's a simple progressive web application made with NextJS",
+  generator: "Next.js",
+  manifest: "/manifest.json",
+  keywords: ["nextjs", "next14", "pwa"],
+  themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#ffffff" }],
+  authors: [
+    {
+      name: "Gopikrishna",
+      url: "https://www.linkedin.com/in/gopikrishna6003/",
+    },
+  ],
+  icons: [
+    { rel: "apple-touch-icon", url: "icons/FJ-128.png" },
+    { rel: "icon", url: "icons/FJ-128.png" },
+  ],
 };
 
 export default async function RootLayout({ children }) {
@@ -22,7 +36,7 @@ export default async function RootLayout({ children }) {
      <head>
         <link rel="icon" href="/images/favicon.ico" />
       </head>
-      <body className="relative h-screen overflow-hidden">
+      <body className="">
      
       <ConfigProvider
           theme={{
@@ -38,11 +52,13 @@ export default async function RootLayout({ children }) {
           <CartProvider>
             <WishlistProvider>
               <AnalyticsProvider>
+              <div className="relative min-h-screen overflow-hidden">
               <Navbar session={session} />
-              <div className="h-full overflow-y-scroll pb-44">
+              <div className="h-full overflow-y-scroll pb-24">
               {children}
               </div>
               <Footer/>
+              </div>
               </AnalyticsProvider>
             </WishlistProvider>
           </CartProvider>

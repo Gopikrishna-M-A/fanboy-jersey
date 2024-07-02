@@ -1,19 +1,47 @@
 "use client"
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { BsPerson } from "react-icons/bs"
 import { TbLayoutListFilled } from "react-icons/tb"
 import { IoMdHeartEmpty } from "react-icons/io"
 import { TbSmartHome } from "react-icons/tb"
 import { BiMessageSquareDetail } from "react-icons/bi"
 import { usePathname, useRouter } from "next/navigation"
-import { Badge } from "antd"
-// import { useWishlist } from "@/contexts/wishlistContext"
 
 const Footer = () => {
   const router = useRouter()
   const pathname = usePathname()
-  // const { wishlist } = useWishlist()
-  // const wishlistQty = wishlist?.length
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  useEffect(() => {
+    const controlFooter = () => {
+      if (typeof window !== 'undefined') {
+        const currentScrollY = window.scrollY
+        const windowHeight = window.innerHeight
+        const documentHeight = document.documentElement.scrollHeight
+
+        if (currentScrollY < lastScrollY) {
+          // Scrolling UP
+          setIsVisible(true)
+        } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+          // Scrolling DOWN and not at the top
+          setIsVisible(false)
+        }
+
+        // Always show footer when at bottom of page
+        if (windowHeight + currentScrollY >= documentHeight - 50) {
+          setIsVisible(true)
+        }
+
+        setLastScrollY(currentScrollY)
+      }
+    }
+
+    window.addEventListener('scroll', controlFooter)
+    return () => {
+      window.removeEventListener('scroll', controlFooter)
+    }
+  }, [lastScrollY])
 
   const getIconClasses = (iconName) => {
     const active =
@@ -31,7 +59,7 @@ const Footer = () => {
   }
 
   return (
-    <div className='w-full absolute bottom-0 px-2 pb-5 bg-gradient-to-b from-transparent to-white z-20'>
+    <div className={`w-full fixed bottom-0 left-0 right-0 px-2 pb-5 bg-gradient-to-b from-transparent to-white z-20 transition-transform duration-300 ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}>
       <div className='w-full min-h-20 bg-gray-950 rounded-full flex justify-between items-center px-2 transition-colors duration-300'>
         <div
           className={`p-5 rounded-full ${getIconClasses(
@@ -47,16 +75,13 @@ const Footer = () => {
           onClick={() => handleIconClick("/orders")}>
           <TbLayoutListFilled className='w-7 h-7' />
         </div>
-        {/* <Badge count={wishlistQty}> */}
-          <div
-            className={`p-5 rounded-full ${getIconClasses(
-              "heart"
-            )} transition-all duration-300`}
-            onClick={() => handleIconClick("/wishlist")}>
-            <IoMdHeartEmpty className='w-7 h-7' />
-          </div>
-        {/* </Badge> */}
-
+        <div
+          className={`p-5 rounded-full ${getIconClasses(
+            "heart"
+          )} transition-all duration-300`}
+          onClick={() => handleIconClick("/wishlist")}>
+          <IoMdHeartEmpty className='w-7 h-7' />
+        </div>
         <div
           className={`p-5 rounded-full ${getIconClasses(
             "message"
