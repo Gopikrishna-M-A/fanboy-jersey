@@ -113,15 +113,15 @@ const ProductCard = ({ product }) => {
     //     <Button onClick={handleCart}>Add to Cart</Button>
     //   </div>
     // </div>
-    <div className="flex flex-col w-fit gap-3">
+    <Link href={`/product/${product._id}`} className="flex flex-col w-fit gap-3">
       <div className="bg-gray-100 h-80 w-80 px-14 rounded-xl flex items-center justify-center relative">
-      <Link href={`/product/${product._id}`}>
+     
         <Image
           src={product.images[0]}
           width={200}
           height={200}
         />
-        </Link>
+        
         <div className="absolute -top-3 left-0 z-10 bg-rose-600 text-white px-5 py-2 rounded-full font-bold">-70%</div>
         <div className="absolute -bottom-3 right-0 z-10 bg-white flex justify-center items-center rounded-full w-16 h-16 shadow-xl">
         {isWishlisted ? (
@@ -152,10 +152,10 @@ const ProductCard = ({ product }) => {
       <div className="font-semibold">{product.name}</div>
       <div className="flex justify-between items-center">
       <div className="flex items-center gap-2 text-lg"><Text delete className="text-gray-400">₹{product.MRP}</Text><div className="text-lg text-green-400">₹{product.sellingPrice}</div></div>
-      <Button className="w-fit" onClick={handleCart}>Add to Cart</Button>
+      {/* <Button className="w-fit" onClick={handleCart}>Add to Cart</Button> */}
       </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

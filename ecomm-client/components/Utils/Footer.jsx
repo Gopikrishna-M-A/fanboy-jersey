@@ -4,7 +4,7 @@ import { BsPerson } from "react-icons/bs"
 import { TbLayoutListFilled } from "react-icons/tb"
 import { IoMdHeartEmpty } from "react-icons/io"
 import { TbSmartHome } from "react-icons/tb"
-import { BiMessageSquareDetail } from "react-icons/bi"
+import { HiOutlineShoppingCart } from "react-icons/hi2";
 import { usePathname, useRouter } from "next/navigation"
 
 const Footer = () => {
@@ -48,7 +48,7 @@ const Footer = () => {
       (iconName === "home" && pathname === "/") ||
       (iconName === "list" && pathname.includes("/orders")) ||
       (iconName === "heart" && pathname.includes("/wishlist")) ||
-      (iconName === "message" && pathname.includes("/notifications")) ||
+      (iconName === "cart" && pathname.includes("/cart")) ||
       (iconName === "person" && pathname.includes("/profile"))
 
     return active ? "bg-red-500 text-white" : "text-gray-600"
@@ -59,7 +59,7 @@ const Footer = () => {
   }
 
   return (
-    <div className={`w-full fixed bottom-0 left-0 right-0 px-2 pb-2 bg-gradient-to-b from-transparent to-white z-20 transition-transform duration-300 ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}>
+    <div className={`md:hidden w-full fixed bottom-0 left-0 right-0 px-2 pb-2 bg-gradient-to-b from-transparent to-white z-20 transition-transform duration-300 ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}>
       <div className='w-full min-h-20 bg-gray-950 rounded-full flex justify-between items-center px-2 transition-colors duration-300'>
         <div
           className={`p-5 rounded-full ${getIconClasses(
@@ -84,10 +84,10 @@ const Footer = () => {
         </div>
         <div
           className={`p-5 rounded-full ${getIconClasses(
-            "message"
+            "cart"
           )} transition-all duration-300`}
-          onClick={() => handleIconClick("/notifications")}>
-          <BiMessageSquareDetail className='w-7 h-7' />
+          onClick={() => handleIconClick("/cart")}>
+          <HiOutlineShoppingCart className='w-7 h-7' />
         </div>
         <div
           className={`p-5 rounded-full ${getIconClasses(

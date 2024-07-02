@@ -39,7 +39,7 @@ const Home = ({ categories }) => {
             layout="fill"
             objectFit="cover"
             alt="Banner"
-            quality={100}
+            // quality={100}
           />
         </div>
       </div>
@@ -62,7 +62,7 @@ const Home = ({ categories }) => {
                 width={100}
                 height={100}
                 src={`/images/team/${team.logo}`}
-                quality={100}
+                // quality={100}
               />
             </Link>
           ))}

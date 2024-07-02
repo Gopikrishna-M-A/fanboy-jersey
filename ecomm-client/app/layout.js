@@ -10,23 +10,26 @@ import { options } from "../app/api/auth/[...nextauth]/options";
 import Session from "../components/Session";
 
 export const metadata = {
-  title: "FanBoy Jerseys",
-  description: "It's a simple progressive web application made with NextJS",
+  title: "FJ",
+  description: "PWA application with Next 13",
   generator: "Next.js",
   manifest: "/manifest.json",
-  keywords: ["nextjs", "next14", "pwa"],
-  themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#ffffff" }],
+  keywords: ["nextjs", "nextjs13", "next13", "pwa", "next-pwa"],
+  themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#fff" }],
   authors: [
     {
       name: "Gopikrishna",
       url: "https://www.linkedin.com/in/gopikrishna6003/",
     },
   ],
+  viewport:
+    "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
   icons: [
     { rel: "apple-touch-icon", url: "icons/FJ-128.png" },
     { rel: "icon", url: "icons/FJ-128.png" },
   ],
 };
+
 
 export default async function RootLayout({ children }) {
   const session = await getServerSession(options);

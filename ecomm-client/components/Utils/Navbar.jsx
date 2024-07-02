@@ -79,64 +79,22 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 w-screen flex items-center justify-between p-5 border-b bg-white">
+      <nav className="sticky top-0 z-50 w-screen flex items-center justify-between px-2 py-5 bg-white">
         <Link className="font-bold text-2xl" href="/">
-          <div className="bg-sky-950 px-3 py-1 rounded text-white font-bold text-lg">FJ</div>
+          <div className="bg-sky-950 px-3 py-1 rounded text-white font-bold text-lg">FanBoy Jersey</div>
         </Link>
-
-        {/* <Search
-          style={{
-            width: "100%",
-            maxWidth: "300px",
-          }}
-          className="search-input hidden lg:block"
-          addonBefore={
-            <Select
-              defaultValue="all-Categories"
-              onChange={handleChange}
-              options={[
-                { value: "all-Categories", label: "All Categories" },
-                { value: "electronics", label: "Electronics" },
-                { value: "clothing", label: "Clothing" },
-                { value: "furniture", label: "Furniture" },
-                { value: "books", label: "Books" },
-                { value: "toys", label: "Toys" },
-                { value: "fruits", label: "Fruits" },
-              ]}
-            />
-          }
-          placeholder="I'm searching for..."
-          allowClear
-          onSearch={onSearch}
-        /> */}
 
         <div className="flex items-center gap-4">
           <div className=" flex gap-8 mr-3">
-            <Link className="link-item" onClick={closeNav} href="/cart">
-              <Badge count={cartQty}>
-                <ShoppingCartOutlined />
-              </Badge>
-            </Link>
-            {/* <Link className="link-item" onClick={closeNav} href="/wishlist">
-            <Badge count={wishlistQty}>
-              <HeartOutlined />
-            </Badge>
-            </Link> */}
+         
+           
           </div>
           {!user && (
               <Button onClick={signIn}>
                 Sign in
               </Button>
           )}
-          {user &&
-          <Dropdown
-            menu={{
-              items,
-            }}
-          >
-             <img src={user.image} className="cursor-pointer w-9 h-9 rounded-full"></img>
-          </Dropdown>
-            } 
+          {user &&  <img src={user.image} className="cursor-pointer w-9 h-9 rounded-full"></img> }
         </div>
       </nav>
     </>
@@ -144,3 +102,10 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+   {/* <Link className="link-item" onClick={closeNav} href="/cart">
+              <Badge count={cartQty}>
+                <ShoppingCartOutlined />
+              </Badge>
+            </Link> */}
