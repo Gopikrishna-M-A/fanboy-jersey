@@ -59,7 +59,7 @@ const Footer = () => {
   }
 
   return (
-    <div className={`w-full fixed bottom-0 left-0 right-0 px-2 pb-5 bg-gradient-to-b from-transparent to-white z-20 transition-transform duration-300 ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}>
+    <div className={`w-full fixed bottom-0 left-0 right-0 px-2 pb-2 bg-gradient-to-b from-transparent to-white z-20 transition-transform duration-300 ${isVisible ? 'translate-y-0' : 'translate-y-full'}`}>
       <div className='w-full min-h-20 bg-gray-950 rounded-full flex justify-between items-center px-2 transition-colors duration-300'>
         <div
           className={`p-5 rounded-full ${getIconClasses(
